@@ -31,6 +31,7 @@ type ShimSpec struct {
 	ContainerdRuntimeOptions map[string]string `json:"containerdRuntimeOptions,omitempty"`
 }
 
+// +kubebuilder:validation:XValidation:rule="!(has(self.anonHttp) && has(self.platforms))",message="anonHttp and platforms are mutually exclusive; specify one or the other"
 type FetchStrategy struct {
 	// Type is the fetch strategy type.
 	//
